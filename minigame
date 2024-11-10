@@ -1,0 +1,49 @@
+import random
+import time
+
+# Welcome message
+print("Welcome to the Adventure Game!")
+print("You are on a quest to find the hidden treasure.")
+print("But be careful, danger lurks in every corner!\n")
+
+# Player choices
+def choose_path():
+    path = ""
+    while path not in ["1", "2"]:
+        path = input("Choose a path (1 or 2): ")
+    return path
+
+# Encounter a monster
+def monster_encounter():
+    print("\nA wild monster appears! You have two choices:")
+    print("1. Fight the monster")
+    print("2. Run away")
+
+    choice = choose_path()
+    if choice == "1":
+        if random.randint(1, 2) == 1:
+            print("You defeated the monster! Moving forward...")
+        else:
+            print("The monster defeated you. Game over!")
+            return False
+    else:
+        print("You escaped safely.")
+    return True
+
+# Main game loop
+def start_game():
+    print("You are standing at the edge of a dark forest.")
+    time.sleep(5)
+
+    if monster_encounter(25):
+        print("You found a path that leads to a clearing.")
+        time.sleep(1)
+
+        if monster_encounter(55):
+            print("You reach the treasure chest. You open it and find the treasure!")
+            print("Congratulations, you won!")
+        else:
+            print("Game over. Better luck next time!")
+
+# Start the game
+start_game()
